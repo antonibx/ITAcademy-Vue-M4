@@ -1,0 +1,131 @@
+/* *************************************************************** */
+/* *************************** GENERAL *************************** */
+/* Atributs de color i mida (adaptable) a la font, i eliminacio del marge per defecte */
+body{
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 5vw;
+    margin: 0;
+}
+/* Atributs del contenidor amb display tipus flex i amagant els elements sobrants */
+.flex-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* *************************************************************** */
+/* **************************** BLOCS **************************** */
+/* Atributs generals per tots els blocs: mides i textos centrats amb flex*/
+.block {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+/* Atributs per cada bloc: color de fons i animació d'entrada*/
+#block1 {
+    background-color: #244F75;
+    animation: entrada-esquerra 1s;
+}
+#block2 {
+
+    background-color: #60BFBF;
+    animation: entrada-inferior 1s;
+}
+#block3 {
+    background-color: #8C4B7E;
+    animation: entrada-superior 1s;
+}
+#block4 {
+    background-color: #F8BB44;
+    animation: entrada-inferior 1s;
+}
+#block5 {
+    background-color: #F24B4B;
+    animation: entrada-dreta 1s;
+}
+
+/* *************************************************************** */
+/* *************************** STRIPES *************************** */
+/* Insercio d'un <div> blanc buit a cada bloc amb una rotació tipus skew de 30 graus*/
+.stripe:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    left: 0;
+    height: 120%;
+    top: -10%;
+    background-color: white;
+    opacity: 0.1;
+    z-index: 1;
+    transform: skew(30deg);
+    transition-duration: 0.5s;
+}
+/* En passar el ratoli per sobre, perd la rotacio de 30 (i amplia una mica) en 5 segons */
+.stripe:hover:before {
+    transform: skew(0deg) scale(3);
+    transition-duration: 0.5s;
+}
+
+/* *************************************************************** */
+/* ************************** ANIMACIONS ************************* */
+/* Animacio entrada de cada bloc en carregar la pagina:
+   els blocs laterals en horitzontal i els centrals vertical */
+@keyframes entrada-esquerra {
+    0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes entrada-inferior {
+    0% {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    10% {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+        }
+    100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes entrada-superior {
+    0% {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    20% {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes entrada-dreta {
+    0% {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    }
+    30% {
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        }
+    100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    }
+}
+/* *************************************************************** */
